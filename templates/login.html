@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/css_login.css') }}">
+    <link href="https://unpkg.com/boxicon@2.1.4/css/boxicon.min.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+    
+<body>
+    <div class="wrapper">
+        <h2>Bienvenu</h2>
+        <form action="/" method="POST">
+            <div class="input-field">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <button type="submit" class="Login">Login</button>
+        </form>
+    </div>
+</body>
+
+</html>
