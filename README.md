@@ -30,12 +30,22 @@ Ce projet a été développé avec `Voutouz` durant l'été entre la classe de s
    openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
    ```
 
-4. **Lancez l'application**
+   ou
+
+   ```bash
+   "C:\Program Files\OpenSSL-Win64\bin\openssl" req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+   ```
+
+🔗 Lien d’installation d’OpenSSL sous Windows : https://slproweb.com/products/Win32OpenSSL.html
+
+
+
+5. **Lancez l'application**
    ```bash
    python app.py
    ```
 
-5. **Accédez à l'application**
+6. **Accédez à l'application**
    - Ouvrez votre navigateur et allez à `https://localhost:5001`
 
 ## 🔐 Identifiants
@@ -88,8 +98,3 @@ Créé par [**B4ptisteC**](https://github.com/B4ptisteC) et [**VOUTOUZ**]()
 
 - Cette application utilise un certificat SSL auto-signé pour le développement local
 - Le mot de passe est stocké en dur dans le code (à usage développement uniquement)
-- Ne pas utiliser en production sans sécuriser l'authentification
-
-## 🤝 Contributions
-
-Les contributions sont bienvenues ! N'hésitez pas à proposer des améliorations.
