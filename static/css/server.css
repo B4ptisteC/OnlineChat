@@ -1,0 +1,86 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #4d8dee, #2555ad, #1717b4);
+    background: linear-gradient(to right, #4d8dee, #258dad, #199fc0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    text-align: center;
+}
+
+
+.card {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+.card-header h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contacts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contacts li {
+    background: rgba(0, 0, 0, 0.4);
+    margin: 10px 0;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contacts li:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.user_info {
+    font-size: 1.5em;
+}
+
+.card-footer {
+    margin-top: 20px;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #e84118;
+    transform: scale(1.05);
+}
