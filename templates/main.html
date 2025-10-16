@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sélection de Serveurs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/server.css') }}">
+    <link href="https://unpkg.com/boxicon@2.1.4/css/boxicon.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="chat card">
+            <div class="card-header">
+                <h2>Sélectionnez un serveur</h2>
+
+            </div>
+            <div class="card-body">
+                <ul class="contacts">
+                    <li class="server-option" data-server="general">
+                        <div class="user_info">
+                            <span>Serveur Général</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <p>Choisissez un serveur pour commencer.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.server-option').forEach(item => {
+            item.addEventListener('click', event => {
+                const server = item.getAttribute('data-server');
+                window.location.href = `${server}.html`;
+            });
+        });
+    </script>
+</body>
+</html>
