@@ -90,11 +90,12 @@ Ce projet a été développé avec `Voutouz` durant l'été entre la classe de s
 - Le compteur de membres connectés se met à jour en temps réel
 - Le chat utilise le broadcast pour que tous les utilisateurs reçoivent les messages
 
-## 👥 Créateurs
-
-Créé par [**B4ptisteC**](https://github.com/B4ptisteC) et [**VOUTOUZ**]()
 
 ## ⚠️ Avertissements
 
 - Cette application utilise un certificat SSL auto-signé pour le développement local
 - Le mot de passe est stocké en dur dans le code (à usage développement uniquement)
+
+## 👥 Créateurs
+
+Créé par [**B4ptisteC**](https://github.com/B4ptisteC) et [**VOUTOUZ**]()
