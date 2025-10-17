@@ -1,6 +1,6 @@
 # Online Chat 💬
 
-Ce projet a été développé avec `Voutouz` durant l'été entre la classe de seconde et de terminale. L'idée était de pouvoir s'envoyer des messages à travers une application faite par nous-mêmes. Ainsi est né OnlineChat ! De nombreuses versions ont été créées au fil du temps, celle-ci étant la plus aboutie de nos efforts.
+Ce projet a été développé avec `Voutouz` durant l'été entre la classe de première et de terminale. L'idée était de pouvoir s'envoyer des messages à travers une application faite par nous-mêmes. Ainsi est né OnlineChat ! De nombreuses versions ont été créées au fil du temps, celle-ci étant la plus aboutie de nos efforts.
 
 ## 🎯 Fonctionnalités
 
