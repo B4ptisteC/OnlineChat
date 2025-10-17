@@ -98,4 +98,4 @@ Ce projet a été développé avec `Voutouz` durant l'été entre la classe de s
 
 ## 👥 Créateurs
 
-Créé par [**B4ptisteC**](https://github.com/B4ptisteC) et [**VOUTOUZ**]()
+Créé par [**B4ptisteC**](https://github.com/B4ptisteC) et [**VOUTOUZ**](https://github.com/VoutouZ)
