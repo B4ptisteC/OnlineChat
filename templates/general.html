@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
 <body>
-    <script src="{{ url_for('static', filename='js/socket.io.latest.js') }}"></script>
-
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <div class="container-fluid h-100">
         <div class="row justify-content-center h-100">
             <div class="col-md-8 col-xl-6 chat">
@@ -42,58 +41,52 @@
             </div>
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     
     <script type="text/javascript">
         var socket = io();
-
+        
+        socket.on('connect', function() {
+            console.log('Connecté au serveur');
+        });
+        
+        socket.on('disconnect', function() {
+            console.log('Déconnecté du serveur');
+        });
+        
         document.addEventListener("DOMContentLoaded", function () {
             var btn = document.getElementById("submit");
             var input = document.getElementById("messageContent");
             var messages = document.getElementById("messages");
-
+            
             function sendMessage() {
                 var message = input.value.trim();
                 if (message) {
-
-                    // easter egg...
-                    var htmlTagPattern = /<\/?[a-z][\s\S]*>/i;                
-                    if (htmlTagPattern.test(message)) {
-                        alert("Why you try this ;)");
-                    }
-
-
                     var today = new Date();
                     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
                     socket.emit("message", message + " - " + time);
                     input.value = "";
                 }
             }
-
+            
             btn.addEventListener("click", function (event) {
                 event.preventDefault();
                 sendMessage();
             });
-
+            
             input.addEventListener("keypress", function (e) {
-                if (e.key === "Enter") {
+                if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     sendMessage();
                 }
             });
-
+            
             socket.on("server response", function (data) {
                 var newMessage = document.createElement("div");
-                newMessage.innerHTML = data;
+                newMessage.textContent = data;
                 messages.appendChild(newMessage);
                 newMessage.scrollIntoView({ behavior: "smooth" });
             });
         });
     </script>
-
-
 </body>
-
 </html>
