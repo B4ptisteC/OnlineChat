@@ -63,15 +63,15 @@ Ce projet a été développé avec `Voutouz` durant l'été entre la classe de p
 
 <div align="center">
 
-<img width="1911" height="1120" alt="Page de Login" src="https://github.com/user-attachments/assets/ca76a5f1-c73f-45b5-b766-f21f2de152d9" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+<img width="1374" height="782" alt="image" src="https://github.com/user-attachments/assets/20b817e1-e957-426c-b89c-38c23592bc75" />
 
 **Page de Login**
 
-<img width="1664" height="968" alt="Page d'accueil" src="https://github.com/user-attachments/assets/96723da0-8b82-4960-9812-c0bd4d4a5403" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+<img width="1306" height="748" alt="image" src="https://github.com/user-attachments/assets/5b9bfb74-f351-48f3-a5bd-1555f85b4781" />
 
 **Page d'accueil**
 
-<img width="1746" height="1003" alt="Chat en temps réel" src="https://github.com/user-attachments/assets/e407dec0-915e-4a09-94da-5ec9d9d51920" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+<img width="1364" height="831" alt="image" src="https://github.com/user-attachments/assets/b3308269-c5a9-4801-a38b-a4579af977f8" />
 
 **Chat en temps réel**
 
