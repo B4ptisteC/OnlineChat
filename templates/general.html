@@ -7,6 +7,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .msg-wrapper {
+            margin: 6px 0;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+        .msg-wrapper.system-msg {
+            color: rgba(255, 255, 255, 0.55);
+            font-style: italic;
+            font-size: 0.88em;
+            text-align: center;
+        }
+        .msg-wrapper.user-msg {
+            background: rgba(255, 255, 255, 0.07);
+        }
+        .msg-username {
+            font-weight: 700;
+            color: #7dd3fc;
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+        .msg-time {
+            font-size: 0.75em;
+            color: rgba(255,255,255,0.4);
+            margin-left: 8px;
+        }
+        .msg-content {
+            color: #f1f5f9;
+        }
+    </style>
 </head>
 <body>
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
@@ -20,6 +50,9 @@
                         <div class="d-flex bd-highlight">
                             <div class="user_info">
                                 <span>Serveur Général</span>
+                                <small style="color:rgba(255,255,255,0.6); margin-left:10px;">
+                                    connecté en tant que <strong>{{ username }}</strong>
+                                </small>
                             </div>
                             <div class="logout">
                                 <a href="main" class="btn btn-secondary">Retour</a>
@@ -58,12 +91,17 @@
             var input = document.getElementById("messageContent");
             var messages = document.getElementById("messages");
             
+            function getTime() {
+                var today = new Date();
+                return today.getHours().toString().padStart(2,'0') + ":"
+                     + today.getMinutes().toString().padStart(2,'0') + ":"
+                     + today.getSeconds().toString().padStart(2,'0');
+            }
+
             function sendMessage() {
                 var message = input.value.trim();
                 if (message) {
-                    var today = new Date();
-                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
-                    socket.emit("message", message + " - " + time);
+                    socket.emit("message", message);
                     input.value = "";
                 }
             }
@@ -81,11 +119,48 @@
             });
             
             socket.on("server response", function (data) {
-                var newMessage = document.createElement("div");
-                newMessage.textContent = data;
-                messages.appendChild(newMessage);
-                newMessage.scrollIntoView({ behavior: "smooth" });
+                var wrapper = document.createElement("div");
+
+                if (data.type === "system") {
+                    wrapper.className = "msg-wrapper system-msg";
+                    wrapper.textContent = data.content;
+                } else {
+                    wrapper.className = "msg-wrapper user-msg";
+
+                    var contentHtml;
+                    if (isImageUrl(data.content)) {
+                        // Render as image — no escaping needed, we control the attribute
+                        var safeUrl = data.content.trim().replace(/"/g, '%22');
+                        contentHtml = '<img src="' + safeUrl + '" '
+                            + 'style="max-width:320px; max-height:240px; border-radius:8px; margin-top:6px; display:block;" '
+                            + 'alt="image" '
+                            + 'onerror="this.replaceWith(document.createTextNode(\'⚠️ Image non chargeable\'))" />';
+                    } else {
+                        contentHtml = '<span class="msg-content">' + escapeHtml(data.content) + '</span>';
+                    }
+
+                    wrapper.innerHTML =
+                        '<span class="msg-username">' + escapeHtml(data.username) + '</span>' +
+                        contentHtml +
+                        '<span class="msg-time">' + getTime() + '</span>';
+                }
+
+                messages.appendChild(wrapper);
+                wrapper.scrollIntoView({ behavior: "smooth" });
             });
+
+            function isImageUrl(text) {
+                var t = text.trim();
+                return /^https?:\/\/.+\.(png|jpe?g|gif|webp|svg|bmp|ico)(\?.*)?$/i.test(t);
+            }
+
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;");
+            }
         });
     </script>
 </body>
